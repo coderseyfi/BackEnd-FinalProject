@@ -1,0 +1,30 @@
+﻿@model IEnumerable<ResumeSkill>
+
+
+@foreach (var item in Model)
+{
+    @if(item.View == null){
+    <div class="media-left">
+        <span class="sun">@item.ResumeCategory.Name</span>
+    </div>
+    <div class="panel-group accordion" id="accordion5">
+        <div class="panel panel-default">
+            <div class="row">
+                <div class="col-sm-4">
+                    @item.Name
+                </div>
+                <div class="col-sm-8">
+                    @item.Description.ToPlainText()
+                </div>
+            </div>
+        </div>
+    </div>
+    }
+    else if(item.View != null){
+    <div class="ethical">
+        <h6>@item.ResumeCategory.Name</h6>
+            <a href="#.">@item.Name</a>
+    </div>
+    }
+}
+

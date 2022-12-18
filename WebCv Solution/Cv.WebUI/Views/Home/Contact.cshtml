@@ -1,0 +1,197 @@
+﻿@model ContactPost
+@{
+    ViewData["Title"] = "Contact";
+}
+<!-- Contact -->
+<div style="opacity:1; display:block;" role="tabpanel" class="tab-pane fade" id="contact">
+    <div class="inside-sec">
+        <!-- BIO AND SKILLS -->
+        <h5 class="tittle">CONATCT ME</h5>
+
+        <!-- Conatct Pages  -->
+        <section>
+            <div class="padding-left-30 padding-right-30 padding-top-50 padding-bottom-50">
+                <div class="row ">
+                    <!-- Phone Number  -->
+                    <div class="col-md-4 text-center">
+                        <div class="icon-box ib-style-1 ib-circle ib-bordered ib-bordered-white ib-bordered-thin ib-medium ib-text-alt i-xlarge dark-text">
+                            <div class="ib-icon"> <i class="fa fa-mobile text-primary"></i> </div>
+                            <div class="ib-info text-dark">
+                                <p>+61 3 8376 6284</p>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Address -->
+                    <div class="col-md-4 text-center">
+                        <div class="icon-box ib-style-1 ib-circle ib-bordered ib-bordered-white ib-bordered-thin ib-medium ib-text-alt i-large">
+                            <div class="ib-icon"> <i class="fa fa-map-marker text-primary"></i> </div>
+                            <div class="ib-info text-dark">
+                                <p>PO Box 21177 Litte Lonsdale St, Melbourne Victoria 8011 Australia</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Email  -->
+                    <div class="col-md-4 text-center">
+                        <div class="icon-box ib-style-1 ib-circle ib-bordered ib-bordered-white ib-bordered-thin ib-medium ib-text-alt i-large">
+                            <div class="ib-icon"> <i class="fa fa-envelope-o text-primary"></i> </div>
+                            <div class="ib-info text-dark">
+                                <p class="no-margin-bottom"><a href="#." class="text-white">support@yourcompany.com</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MAP -->
+            <section class="map-block">
+                <div class="map-wrapper" id="map-canvas" data-lat="-37.814199" data-lng="144.961560" data-zoom="13" data-style="1"></div>
+                <div class="markers-wrapper addresses-block"> <a class="marker" data-rel="map-canvas" data-lat="-37.814199" data-lng="144.961560" data-string="Envato"></a> </div>
+            </section>
+
+            <!-- Contact  -->
+            <h5 class="tittle">SAY HELLO</h5>
+            <div class="contact style-3 light-border padding-top-50 padding-bottom-50 padding-left-20 padding-right-20">
+
+                <!-- Form  -->
+                <div class="contact-right">
+                    <!-- Success Msg -->
+                    <div id="contact_message_1" class="success-msg"> <i class="fa fa-paper-plane-o"></i>Thank You. Your Message has been Submitted</div>
+
+                    <!-- FORM -->
+                    <form role="form" id="contact_form_1" class="contact-form" method="post" novalidate>
+                        <ul class="row">
+                            <li class="col-sm-4">
+                                <label>
+                                    <input type="text"
+                                           class="form-control"
+                                           asp-for="Name"
+                                           id="name_1"
+                                           placeholder="NAME">
+                                    <span asp-validation-for="Name" class="text-danger"></span>
+                                </label>
+                            </li>
+                            <li class="col-sm-4">
+                                <label>
+                                    <input type="text"
+                                           class="form-control"
+                                           asp-for="Email"
+                                           id="email_1"
+                                           placeholder="EMAIL">
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </label>
+                            </li>
+                            <li class="col-sm-4">
+                                <label>
+                                    <input type="text"
+                                           class="form-control"
+                                           asp-for="Subject"
+                                           id="company_1"
+                                           placeholder="SUBJECT">
+                                    <span asp-validation-for="Subject" class="text-danger"></span>
+
+                                </label>
+                            </li>
+                            <li class="col-sm-12">
+                                <label>
+                                    <textarea class="form-control"
+                                              asp-for="Content"
+                                              id="message_1"
+                                              rows="5"
+                                              placeholder="CONTENT..."></textarea>
+                                    <span asp-validation-for="Content" class="text-danger"></span>
+
+                                </label>
+                            </li>
+                            <li class="col-sm-12">
+                                <button type="submit"
+                                        value="submit"
+                                        id="btn_submit_1">
+                                    SEND ME
+                                </button>
+                            </li>
+                        </ul>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+@section addcss{
+    <link rel="stylesheet" href="~/libs/toastr.js/toastr.min.css" />
+    <style>
+        input[Name].novalidated,
+        textarea[Name].novalidated {
+            border: 1px solid rgb(223, 53,69);
+        }
+    </style>
+}
+
+@section addjs{
+    <script src="~/libs/toastr.js/toastr.min.js"></script>
+    <script src="~/libs/toastr.js/toastr.customize.js"></script>
+
+    <script>
+        $(document).ready(function () {
+
+            $("#contact_form_1").submit(function (ev) {
+                ev.preventDefault();
+                console.log(ev.currentTarget);
+
+                let fd = new FormData(ev.currentTarget); // form => formData
+
+                $.ajax({
+                    url: '@Url.Action("Contact")',
+                    type: "POST",
+                    data: fd,
+                    processData: false,
+                    contentType: false,
+                    success: function (response) {
+                        $("#contact_form_1 span.text-danger").remove();
+                        $("#contact_form_1 input[Name], #contact_form_1 textarea[Name]").removeClass("novalidated");
+                        console.log(response, "SUCCESS");
+
+                        if (response.error == true) {
+
+                            toastr.error(response.message, "Xeta");
+                            showError(response.state);
+
+                            return;
+                        }
+
+                        toastr.success(response.message, "Ugur!");
+
+                        ev.currentTarget.reset();
+                    },
+                    error: function (errResponse) {
+                        console.log(errResponse, "ERROR");
+                    }
+
+                })
+
+
+            })
+        });
+
+        function showError(state) {
+
+
+
+
+            state.forEach(item => {
+
+                let errorInput = $(`#contact_form_1 input[name = ${item.fieldName}], #contact_form_1 textarea[name = ${item.fieldName}]`);
+                let errorSpan = $("<span/>", {
+                    class: 'text-danger',
+                    html: item.message
+                });
+
+                $(errorInput.parent()).append(errorSpan);
+                $(errorInput).addClass("novalidated")
+            });
+        }
+    </script>
+}

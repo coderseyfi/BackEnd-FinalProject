@@ -1,0 +1,23 @@
+﻿@model PortfolioViewModel
+
+<div id="Container" class="item-space row col-3" style="height: 0px; perspective: 3000px; perspective-origin: 50% 50%; transition: height 600ms ease 0s;">
+
+    @foreach (var item in Model.Projects)
+    {
+        <article class="portfolio-item mix c-@item.ProjectCategoryId" data-inter-pos-x="0" data-inter-pos-y="0" data-final-pos-x="0" data-final-pos-y="0" style="transition: all 600ms ease 0ms, opacity 600ms linear; display: inline-block; transform: translate(0px, 0px);" data-bound="true">
+            <div class="portfolio-image">
+                <a href="#."> <img class="img-responsive" alt="Open Imagination" src="/uploads/images/@item.ImagePath"> </a>
+                <div class="portfolio-overlay style-4">
+                    <div class="detail-info">
+                        <div class="position-center-center">
+                            <h3 class="no-margin">@item.Name</h3>
+                            <span><a href="#.">@item.ProjectCategory.Name</a></span><a href="@item.Link" ." class="go"><i class="fa fa-link"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <input hidden asp-for="@item.ProjectCategoryId" />
+    }
+</div>
+

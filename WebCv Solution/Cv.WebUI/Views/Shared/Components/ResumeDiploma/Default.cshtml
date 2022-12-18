@@ -1,0 +1,24 @@
+﻿@model IEnumerable<ResumeDiploma>
+
+
+@foreach(var item in Model){
+    <div class="exp">
+        <div class="media-left">
+            <span class="sun">@item.StartYear-@item.EndYear</span>
+        </div>
+        <div class="media-body">
+            <!-- COmpany Logo -->
+            <div class="company-logo">
+                <span class="diploma">
+                    <img style="width: 111px; height: 67px;" src="~/uploads/images/@item.ImagePath" alt="" />
+                </span>
+            </div>
+            <h6>@item.UniversityName</h6>
+            <p>@item.Degree</p>
+            <p>@item.YearObtention</p>
+            <p class="margin-top-10">
+                @item.Details.ToPlainText()
+            </p>
+        </div>
+    </div>
+}

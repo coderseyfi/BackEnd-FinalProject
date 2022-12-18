@@ -1,0 +1,23 @@
+﻿@model IEnumerable<ResumeExperience>
+
+
+@foreach(var item in Model){
+<div class="exp">
+    <div class="media-left">
+        <span class="sun">@item.StartYear-@item.EndYear</span>
+    </div>
+    <div class="panel-group accordion" id="accordion5">
+        <div class="panel panel-default">
+            <div class="row">
+                <div class="col-sm-4">
+                    @item.Title
+                    / @item.Location
+                </div>
+                <div class="col-sm-8">
+                    @item.Details.ToPlainText()
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+}

@@ -1,0 +1,57 @@
+﻿@model PortfolioViewModel
+
+@{
+    ViewData["Title"] = "Portfolio";
+}
+
+<div role="tabpanel" class="tab-pane fade active in" id="portfolio">
+    <div class="inside-sec">
+        <!-- BIO AND SKILLS -->
+        <h5 class="tittle">PORTFOLIO</h5>
+
+        <!-- PORTFOLIO -->
+        <section class="portfolio padding-top-50 padding-bottom-50">
+            <!-- Work Filter -->
+            <ul class="tabs portfolio-filter text-center margin-bottom-30">
+                <li class="filter" data-filter="all">all</li>
+                @foreach (var item in Model.ProjectCategories)
+                {
+                    <li class="filter" data-filter=".c-@item.Id">@item.Name</li>
+                }
+            </ul>
+
+            <!-- PORTFOLIO ITEMS -->
+            <partial name="_Projects" />
+        </section>
+    </div>
+</div>
+
+@section addjs{
+    <script>
+    $(document).ready(function(e){
+        e.preventDefault();
+
+        let fd = new FormData();
+
+        var categoryId = @Model.ProjectCategories;
+
+        $.ajax({
+             url: `@Url.Action("Portfolio")`,
+             type: 'POST',
+             data: fd,
+             contentType: false,
+             processData: false,
+             success: function (response) {
+                 console.log(response)
+                 if (response.error == true) {
+                     return;
+                 }
+                 location.reload();
+             },
+             error: function (errorResponse) {
+                 console.error(errorResponse);
+             }
+        });
+    })
+    </script>
+}

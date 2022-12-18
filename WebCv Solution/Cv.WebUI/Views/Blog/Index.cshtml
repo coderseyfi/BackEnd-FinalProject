@@ -1,0 +1,41 @@
+﻿@model PagedViewModel<BlogPost>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<!-- BLOG -->
+<div style="opacity:1; display:block;" role="tabpanel" class="tab-pane fade" id="blog">
+    <div class="inside-sec">
+        <!-- BIO AND SKILLS -->
+        <h5 class="tittle">BLOG</h5>
+
+        <!-- Blog -->
+        <section class="blog blog-page padding-20 padding-top-50 padding-bottom-50 ">
+
+            <div id="dynamic-content">
+                <partial name="_PostsBody" model="@Model" />
+            </div>
+        </section>
+    </div>
+</div>
+
+@section addjs{
+
+    <script>
+        function goPage (pageIndex, pageSize){
+
+            $.ajax({
+                url: `@Url.Action("Index")?pageIndex=${pageIndex}&pageSize=${pageSize}`,
+                method:'GET',
+                success:function(response){
+                    $('#dynamic-content').html(response);
+                    location.hash = '#dynamic-content';
+                     location.hash = '';
+                },
+                error: function (response) {
+                    console.log(response)
+                }
+            });
+        }
+    </script>
+}

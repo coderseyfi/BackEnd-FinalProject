@@ -1,0 +1,61 @@
+﻿@model IEnumerable<About>
+
+
+<ul class="personal-info">
+    @foreach (var item in Model)
+        {
+            <li>
+                <p> <span> Name</span>@item.Name</p>
+            </li>
+            <li>
+                <p> <span> Age</span>@item.Age</p>
+            </li>
+            <li>
+                <p>
+                    @if (@item.Location == null)
+                    {
+                        <span></span>
+                    }
+                    else
+                    {
+                        <span> Location</span>
+                    }
+
+                    @item.Location
+                </p>
+
+            </li>
+            <li>
+                <p> <span> Experience</span>@item.Experince </p>
+            </li>
+            <li>
+                <p> <span> Degree</span> @item.Degree</p>
+            </li>
+            <li>
+                <p> <span> Career Level</span>@item.CareerLevel</p>
+            </li>
+            <li>
+                <p> <span> Phone</span>@item.Phone</p>
+            </li>
+            <li>
+                <p> <span> FAX</span>@item.Fax </p>
+            </li>
+            <li>
+                <p> <span> E-mail</span> <a href="#."></a> @item.Email</p>
+            </li>
+            <li>
+                <p>
+                    @if (@item.Website == null)
+                    {
+                        <span></span>
+                    }
+                    else
+                    {
+                        <span> Website</span>
+                    }
+
+                    <a href="#."></a>@item.Website
+                </p>
+            </li>
+        }
+</ul>

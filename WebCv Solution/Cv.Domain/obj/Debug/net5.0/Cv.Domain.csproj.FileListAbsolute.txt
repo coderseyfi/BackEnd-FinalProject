@@ -1,0 +1,15 @@
+D:\Academy p513\Asp.Net Final Project\WebCv Solution\Cv.Domain\bin\Debug\net5.0\Cv.Domain.deps.json
+D:\Academy p513\Asp.Net Final Project\WebCv Solution\Cv.Domain\bin\Debug\net5.0\Cv.Domain.runtimeconfig.json
+D:\Academy p513\Asp.Net Final Project\WebCv Solution\Cv.Domain\bin\Debug\net5.0\Cv.Domain.runtimeconfig.dev.json
+D:\Academy p513\Asp.Net Final Project\WebCv Solution\Cv.Domain\bin\Debug\net5.0\Cv.Domain.dll
+D:\Academy p513\Asp.Net Final Project\WebCv Solution\Cv.Domain\bin\Debug\net5.0\ref\Cv.Domain.dll
+D:\Academy p513\Asp.Net Final Project\WebCv Solution\Cv.Domain\bin\Debug\net5.0\Cv.Domain.pdb
+D:\Academy p513\Asp.Net Final Project\WebCv Solution\Cv.Domain\obj\Debug\net5.0\Cv.Domain.csproj.AssemblyReference.cache
+D:\Academy p513\Asp.Net Final Project\WebCv Solution\Cv.Domain\obj\Debug\net5.0\Cv.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\Academy p513\Asp.Net Final Project\WebCv Solution\Cv.Domain\obj\Debug\net5.0\Cv.Domain.AssemblyInfoInputs.cache
+D:\Academy p513\Asp.Net Final Project\WebCv Solution\Cv.Domain\obj\Debug\net5.0\Cv.Domain.AssemblyInfo.cs
+D:\Academy p513\Asp.Net Final Project\WebCv Solution\Cv.Domain\obj\Debug\net5.0\Cv.Domain.csproj.CoreCompileInputs.cache
+D:\Academy p513\Asp.Net Final Project\WebCv Solution\Cv.Domain\obj\Debug\net5.0\Cv.Domain.dll
+D:\Academy p513\Asp.Net Final Project\WebCv Solution\Cv.Domain\obj\Debug\net5.0\ref\Cv.Domain.dll
+D:\Academy p513\Asp.Net Final Project\WebCv Solution\Cv.Domain\obj\Debug\net5.0\Cv.Domain.pdb
+D:\Academy p513\Asp.Net Final Project\WebCv Solution\Cv.Domain\obj\Debug\net5.0\Cv.Domain.genruntimeconfig.cache

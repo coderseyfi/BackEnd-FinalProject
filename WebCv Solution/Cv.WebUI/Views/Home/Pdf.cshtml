@@ -1,0 +1,80 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <!-- StyleSheets -->
+    <link rel="stylesheet" href="~/assets/css/ionicons.min.css" />
+    <link rel="stylesheet" href="~/assets/css/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/assets/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="~/assets/css/main.css" />
+    <link rel="stylesheet" href="~/assets/css/style.css" />
+    <link rel="stylesheet" href="~/assets/css/responsive.css" />
+
+    <!-- FontsOnline -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900"
+          rel="stylesheet" />
+
+
+    <!-- JavaScripts -->
+    <script src="~/assets/js/vendors/modernizr.js"></script>
+    <meta name="viewport" content="width=device-width" />
+    <title>Export</title>
+</head>
+<body>
+    <div class="container" id="Grid">
+        <div class="inside-sec">
+            <!-- BIO AND SKILLS -->
+            <h5 class="tittle">Bio</h5>
+            <div class="bio-info padding-30">
+                @await Component.InvokeAsync("PdfBio")
+            </div>
+        </div>
+
+        <div class="inside-sec margin-top-30">
+            <!-- Professional Experience -->
+            <h5 class="tittle">Skills</h5>
+            <div class="padding-30 exp-history">
+                @await Component.InvokeAsync("PdfSkill")
+            </div>
+        </div>
+
+        <div class="inside-sec margin-top-30">
+            <!-- Professional Experience -->
+            <h5 class="tittle">Professional Experience</h5>
+            <div class="padding-30 exp-history">
+                @await Component.InvokeAsync("PdfExperience")
+            </div>
+        </div>
+
+        <div class="inside-sec margin-top-30">
+            <!-- Academic Background -->
+            <h5 class="tittle">Academic Background</h5>
+            <div class="padding-30 exp-history">
+                @await Component.InvokeAsync("PdfEducation")
+            </div>
+        </div>
+
+
+    </div>
+    @using (Html.BeginForm("Export", "Home", FormMethod.Post))
+    {
+        <input type="hidden" name="GridHtml" />
+        <input type="submit" id="btnSubmit" value="Export" class="btn btn-success" />
+    }
+
+
+    <script src="~/assets/js/vendors/jquery/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            $("#btnSubmit").click(function () {
+                $("input[name='GridHtml']").val($("#Grid").html());
+            });
+        });
+    </script>
+</body>
+</html>

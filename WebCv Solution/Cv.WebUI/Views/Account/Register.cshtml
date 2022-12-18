@@ -1,0 +1,271 @@
+﻿@using Cv.Domain.Models.FormModels
+@model RegisterFormModel
+
+@{
+    ViewData["Title"] = "Register";
+    Layout = null;
+}
+
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="M_Adnan" />
+    <title>Resume / CV HTML5 Template</title>
+
+    <link rel="stylesheet" href="~/assets/css/ionicons.min.css">
+    <link rel="stylesheet" href="~/assets/css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="~/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/assets/css/main.css">
+    <link rel="stylesheet" href="~/assets/css/style.css">
+    <link rel="stylesheet" href="~/assets/css/responsive.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+
+    <script src="~/assets/js/vendors/modernizr.js"></script>
+    <script src="https://kit.fontawesome.com/cf7085364a.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+    <div class="login-wrap">
+        <div class="login-html">
+            <a asp-action="Signin" class="sign-in tab">Sign In</a>
+            <a asp-action="Register" class="sign-up tab">Sign Up</a>
+            <div class="login-form">
+                <div class="text-danger mt-2 mb-2" asp-validation-summary="All"></div>
+                <form method="post" class="sign-up-htm">
+                    @if (!string.IsNullOrWhiteSpace(ViewBag.Message))
+                    {
+                        <div class="group">
+                            <label class="alert alert-danger text-white">@ViewBag.Message</label>
+
+                        </div>
+                    }
+                    <div class="group">
+                        <label for="pass" class="label">Name</label>
+                        <input asp-for="Name" class="input">
+                    </div>
+                    <div class="group">
+                        <label for="pass" class="label">Surname</label>
+                        <input asp-for="Surname" class="input">
+                    </div>
+                    <div class="group">
+                        <label for="pass" class="label">EmailAdress</label>
+                        <input asp-for="Email" class="input">
+                    </div>
+                    <div class="group">
+                        <label for="pass" class="label">Password</label>
+                        <input asp-for="Password" class="input" data-type="password">
+                    </div>
+                    <div class="group">
+                        <label for="pass" class="label">Confirm Password</label>
+                        <input asp-for="ConfirmPassword" class="input" data-type="password">
+                    </div>
+
+                    <div class="group">
+                        <button type="submit" class="button">Sign Up</button>
+                    </div>
+                    <div class="hr"></div>
+                    <div class="foot-lnk">
+                        <a asp-action="Signin">Already Member?</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/assets/js/vendors/jquery/jquery.min.js"></script>
+    <script src="~/assets/js/vendors/bootstrap.min.js"></script>
+    <script src="~/assets/js/vendors/owl.carousel.min.js"></script>
+    <script src="~/assets/js/vendors/jquery.isotope.min.js"></script>
+    <script src="~/assets/js/main.js"></script>
+
+    <!-- Begin Map Script-->
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+    <script src="~/assets/js/vendors/map.js"></script>
+</body>
+
+</html>
+
+
+
+<style>
+    body {
+        margin: 0;
+        color: #6a6f8c;
+        background: #c8c8c8;
+        font: 600 16px/18px 'Open Sans',sans-serif;
+    }
+
+    *, :after, :before {
+        box-sizing: border-box
+    }
+
+    .clearfix:after, .clearfix:before {
+        content: '';
+        display: table
+    }
+
+    .clearfix:after {
+        clear: both;
+        display: block
+    }
+
+    .active {
+        color: #fff;
+        border-color: #1161ee;
+    }
+
+    a {
+        color: inherit;
+        text-decoration: none
+    }
+
+    .login-wrap {
+        width: 100%;
+        margin: auto;
+        max-width: 525px;
+        box-shadow: 0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
+    }
+
+    .login-html {
+        width: 100%;
+        height: 100%;
+        padding: 90px 70px 50px 70px;
+        background: rgba(40,57,101,.9);
+    }
+
+
+
+        .login-html .sign-in,
+        .login-html .sign-up,
+        .login-form .group .check {
+            display: none;
+        }
+
+        .login-html .tab,
+        .login-form .group .label,
+        .login-form .group .button {
+            text-transform: uppercase;
+        }
+
+        .login-html .tab {
+            font-size: 22px;
+            margin-right: 15px;
+            padding-bottom: 5px;
+            margin: 0 15px 10px 0;
+            display: inline-block;
+            border-bottom: 2px solid transparent;
+        }
+
+
+
+    .login-form {
+        min-height: 345px;
+        position: relative;
+        perspective: 1000px;
+        transform-style: preserve-3d;
+    }
+
+        .login-form .group {
+            margin-bottom: 15px;
+        }
+
+            .login-form .group .label,
+            .login-form .group .input,
+            .login-form .group .button {
+                width: 100%;
+                color: #fff;
+                display: block;
+            }
+
+            .login-form .group .input,
+            .login-form .group .button {
+                border: none;
+                padding: 15px 20px;
+                border-radius: 25px;
+                background: rgba(255,255,255,.1);
+            }
+
+
+            .login-form .group .label {
+                color: #aaa;
+                font-size: 12px;
+            }
+
+            .login-form .group .button {
+                background: #1161ee;
+            }
+
+            .login-form .group label .icon {
+                width: 15px;
+                height: 15px;
+                border-radius: 2px;
+                position: relative;
+                display: inline-block;
+                background: rgba(255,255,255,.1);
+            }
+
+                .login-form .group label .icon:before,
+                .login-form .group label .icon:after {
+                    content: '';
+                    width: 10px;
+                    height: 2px;
+                    background: #fff;
+                    position: absolute;
+                    transition: all .2s ease-in-out 0s;
+                }
+
+                .login-form .group label .icon:before {
+                    left: 3px;
+                    width: 5px;
+                    bottom: 6px;
+                    transform: scale(0) rotate(0);
+                }
+
+                .login-form .group label .icon:after {
+                    top: 6px;
+                    right: 0;
+                    transform: scale(0) rotate(0);
+                }
+
+            .login-form .group .check:checked + label {
+                color: #fff;
+            }
+
+                .login-form .group .check:checked + label .icon {
+                    background: #1161ee;
+                }
+
+                    .login-form .group .check:checked + label .icon:before {
+                        transform: scale(1) rotate(45deg);
+                    }
+
+                    .login-form .group .check:checked + label .icon:after {
+                        transform: scale(1) rotate(-45deg);
+                    }
+
+    .hr {
+        height: 2px;
+        margin: 60px 0 50px 0;
+        background: rgba(255,255,255,.2);
+    }
+
+    .foot-lnk {
+        text-align: center;
+    }
+</style>
+
+<script>
+    var pathname = location.pathname
+
+
+    $(".tab").each(function () {
+        if ($(this).attr('href') == pathname) {
+            $(this).addClass('active')
+        }
+    })
+</script>

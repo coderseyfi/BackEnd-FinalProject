@@ -1,0 +1,29 @@
+﻿@model PagedViewModel<BlogPost>
+
+
+
+@foreach (var item in Model.Items)
+{
+    <article>
+        <a asp-controller="blog" asp-action="details" asp-route-id="@item.Id" asp-route-slug="@item.Slug"><img class="img-responsive" src="~/uploads/images/@item.ImagePath" alt="blog-image"></a>
+        <div class="post-info">
+            <div class="post-in">
+                <div class="extra">
+                    <span><i class="icon-calendar"></i>@item.PublishedDate?.ToString("MMM dd, yyyy")</span>
+                    <span class="margin-left-15"><i class="icon-user"></i>Admin</span>
+                    <a class="margin-left-15"><i class="icon-bubbles"></i>Comment</a>
+                </div>
+                <a class="tittle-post" asp-action="Details" asp-route-slug="@item.Slug">@item.Title</a>
+                <p class="blog-short-content">@Html.Raw(item.Body)</p>
+                <a asp-action="details" asp-route-id="@item.Id" asp-route-slug="@item.Slug" class="btn-1">Read More <i class="fa fa-angle-right"></i></a>
+            </div>
+        </div>
+    </article>
+}
+
+<!-- Pagination -->
+<div class="row">
+    <div class="col-12">
+        @Model.GetPager(Url, "Index", paginateFunction: "goPage")
+    </div>
+</div>

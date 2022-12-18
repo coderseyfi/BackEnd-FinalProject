@@ -1,0 +1,15 @@
+﻿@model ResumeBio
+<div class="inside-sec">
+    <!-- BIO AND SKILLS -->
+    <h5 class="h5-tittle">Bio & Skills</h5>
+    <div class="bio-info padding-30">
+        <p>
+            @Model.Text.ToPlainText()
+        </p>
+        <td class="operations table-imaged">
+            <a asp-action="edit" name="" asp-route-id=@Model.Id class="btn btn-warning mr-2">Edit</a>
+            <a asp-action="index" class="btn btn-info">Cancel</a>
+        </td>
+    </div>
+</div>
+

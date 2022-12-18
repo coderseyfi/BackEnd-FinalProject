@@ -1,0 +1,22 @@
+﻿@model IEnumerable<ResumeExperience>
+
+
+@foreach(var item in Model){
+<div class="exp">
+    <div class="media-left">
+        <span class="sun">@item.StartYear-@item.EndYear</span>
+    </div>
+    <div class="media-body">
+        <!-- COmpany Logo -->
+        <div class="company-logo">
+                <img style="width: 111px; height: 67px;" src="~/uploads/images/@item.ImagePath" alt="" />
+        </div>
+        <h6>@item.CompanyName</h6>
+        <p>@item.Title</p>
+        <p>@item.Location</p>
+        <p class="margin-top-10 ellipse">
+            @item.Details.ToPlainText()
+        </p>
+    </div>
+</div>
+}

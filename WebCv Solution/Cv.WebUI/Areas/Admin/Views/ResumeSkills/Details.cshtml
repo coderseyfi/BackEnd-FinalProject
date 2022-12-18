@@ -1,0 +1,104 @@
+﻿@model ResumeSkill
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Details</h1>
+
+<h4>Skills</h4>
+<hr />
+
+<div class="page-wrapper">
+    <div class="page-header">
+        <div class="row align-items-end">
+            <div class="col-lg-8">
+                <div class="page-header-title">
+                    <div class="d-inline">
+                        <h4>Bootstrap Border Sizes</h4>
+                        <span>
+                            lorem ipsum dolor sit amet, consectetur adipisicing
+                            elit
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="page-header-breadcrumb">
+                    <ul class="breadcrumb-title">
+                        <li class="breadcrumb-item" style="float: left;">
+                            <a asp-controller="Dashboard" asp-action="index"> <i class="feather icon-home"></i> </a>
+                        </li>
+                        <li class="breadcrumb-item" style="float: left;">
+                            <a asp-action="index">Skills</a>
+                        </li>
+                        <li class="breadcrumb-item" style="float: left;">
+                            <span>Details</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-body">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Basic Form Inputs</h5>
+                        <span>
+                            Add class of <code>.form-control</code> with
+                            <code>&lt;input&gt;</code> tag
+                        </span>
+
+
+                        <div class="card-header-right">
+                            <i class="icofont icofont-spinner-alt-5"></i>
+                        </div>
+
+                    </div>
+                    <div class="card-block">
+                        <h4 class="sub-title">Basic Inputs</h4>
+
+                        <div>
+                            <div class="form-group row">
+                                <label asp-for="ResumeCategory" class="col-sm-2 col-form-label"></label>
+                                <p>@Model.ResumeCategory.Name</p>
+                            </div>
+
+                            <div class="form-group row">
+                                <label asp-for="Name" class="col-sm-2 col-form-label"></label>
+                                <p>
+                                    @Model.Name
+                                </p>
+                            </div>
+
+                            <div class="form-group row">
+                                <label asp-for="Level" class="col-sm-2 col-form-label"></label>
+                                <p>
+                                    @Model.Level
+                                </p>
+                            </div>
+                            <div class="form-group row">
+                                <label asp-for="Description" class="col-sm-2 col-form-label"></label>
+                                <div>
+                                    @Html.Raw(Model.Description)
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-12 d-flex justify-content-end">
+                                    <a asp-action="edit" name="" asp-route-id=@Model.Id class="btn btn-warning mr-2">Edit</a>
+                                    <a asp-action="index" class="btn btn-info">Cancel</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

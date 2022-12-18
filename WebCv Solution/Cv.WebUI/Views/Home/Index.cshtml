@@ -1,0 +1,248 @@
+﻿@model IEnumerable<About>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<!-- ABOUT ME -->
+<div style="opacity:1; display:block;" role="tabpanel" class="tab-pane fade in active" id="about-me">
+    <div class="inside-sec">
+        <!-- BIO AND SKILLS -->
+        <h5 class="tittle">About Me</h5>
+
+        <!-- Blog -->
+        <section class="about-me padding-top-10">
+
+            <!-- Personal Info -->
+            <ul class="personal-info">
+                @foreach (var item in Model)
+                {
+                    <li>
+                        <p> <span> Name</span>@item.Name</p>
+                    </li>
+                    <li>
+                        <p> <span> Age</span>@item.Age years</p>
+                    </li>
+                    <li>
+                        <p>
+                            @if (@item.Location == null)
+                            {
+                                <span></span>
+                            }
+                            else
+                            {
+                                <span> Location</span>
+                            }
+
+                            @item.Location
+                        </p>
+
+                    </li>
+                    <li>
+                        <p> <span> Experience</span>@item.Experince years</p>
+                    </li>
+                    <li>
+                        <p> <span> Degree</span> @item.Degree</p>
+                    </li>
+                    <li>
+                        <p> <span> Career Level</span>@item.CareerLevel</p>
+                    </li>
+                    <li>
+                        <p> <span> Phone</span>@item.Phone</p>
+                    </li>
+                    <li>
+                        <p> <span> FAX</span>@item.Fax </p>
+                    </li>
+                    <li>
+                        <p> <span> E-mail</span> <a href="#."></a> @item.Email</p>
+                    </li>
+                    <li>
+                        <p>
+                            @if (@item.Website == null)
+                            {
+                                <span></span>
+                            }
+                            else
+                            {
+                                <span> Website</span>
+                            }
+
+                            <a href="#."></a>@item.Website
+                        </p>
+                    </li>
+                }
+            </ul>
+
+            <!-- I’m Web Designer -->
+            @foreach (var item in Model)
+            {
+                <h5 class="tittle">@item.ShortDescription</h5>
+                <div class="padding-20">
+                    <p>
+                        @Html.Raw(@item.LongDescription)
+                    </p>
+                </div>
+            }
+
+            <!-- Services -->
+            <h5 class="tittle">Services</h5>
+            <div class="row padding-20 margin-top-50">
+
+                <!-- Icon -->
+                <div class="col-md-4 text-center">
+                    <div class="icon-box i-large ib-black">
+                        <div class="ib-icon"> <i class="fa fa-whatsapp"></i> </div>
+                        <div class="ib-info">
+                            <h4 class="h6">WEB DEVELOPMENT</h4>
+                            <p>We have created the new macbook psd version with scalable vector shapes.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Icon -->
+                <div class="col-md-4 text-center">
+                    <div class="icon-box i-large ib-black">
+                        <div class="ib-icon"> <i class="fa fa-magic"></i> </div>
+                        <div class="ib-info">
+                            <h4 class="h6">WEB DESIGN</h4>
+                            <p>We have created the new macbook psd version with scalable vector shapes.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Icon -->
+                <div class="col-md-4 text-center">
+                    <div class="icon-box i-large ib-black">
+                        <div class="ib-icon"> <i class="fa fa-smile-o"></i> </div>
+                        <div class="ib-info">
+                            <h4 class="h6">RESPONSIVE</h4>
+                            <p>We have created the new macbook psd version with scalable vector shapes.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Icon Row -->
+            <div class="row padding-20 margin-bottom-50">
+
+                <!-- Icon -->
+                <div class="col-md-4">
+                    <div class="icon-box i-large ib-black">
+                        <div class="ib-icon"> <i class="fa fa-diamond"></i> </div>
+                        <div class="ib-info">
+                            <h4 class="h6">Unique Design</h4>
+                            <p>We have created the new macbook psd version with scalable vector shapes.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Icon -->
+                <div class="col-md-4">
+                    <div class="icon-box i-large ib-black">
+                        <div class="ib-icon"> <i class="fa fa-server"></i> </div>
+                        <div class="ib-info">
+                            <h4 class="h6">Demos Layout</h4>
+                            <p>We have created the new macbook psd version with scalable vector shapes.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Icon -->
+                <div class="col-md-4">
+                    <div class="icon-box i-large ib-black">
+                        <div class="ib-icon"> <i class="fa fa-scissors"></i> </div>
+                        <div class="ib-info">
+                            <h4 class="h6">Clean Code</h4>
+                            <p>We have created the new macbook psd version with scalable vector shapes.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skills -->
+            <h5 class="tittle">Skills</h5>
+
+            <!-- Sound Engineering -->
+            <div class="panel-group accordion padding-20" id="accordion">
+                <div class="panel panel-default">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <!-- PANEL HEADING -->
+                            <div class="panel-heading">
+                                <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" class="collapsed"> Photoshop</a> </h4>
+                            </div>
+                        </div>
+
+                        <!-- Skillls Bars -->
+                        <div class="col-sm-8">
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"> <span class="sr-only">60% Complete</span> </div>
+                            </div>
+
+                            <!-- Skillls Text -->
+                            <div id="collapseOne" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Business Administration -->
+
+                <div class="panel panel-default">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <!-- PANEL HEADING -->
+                            <div class="panel-heading">
+                                <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapsetwo" class="collapsed"> Dreamviewer</a> </h4>
+                            </div>
+                        </div>
+
+                        <!-- Skillls Bars -->
+                        <div class="col-sm-8">
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"> <span class="sr-only">60% Complete</span> </div>
+                            </div>
+
+                            <!-- Skillls Text -->
+                            <div id="collapsetwo" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- HTML -->
+                <div class="panel panel-default">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <!-- PANEL HEADING -->
+                            <div class="panel-heading">
+                                <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapsethree" class="collapsed"> HTML5/CSS3</a> </h4>
+                            </div>
+                        </div>
+
+                        <!-- Skillls Bars -->
+                        <div class="col-sm-8">
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> <span class="sr-only">60% Complete</span> </div>
+                            </div>
+
+                            <!-- Skillls Text -->
+                            <div id="collapsethree" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

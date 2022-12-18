@@ -1,0 +1,176 @@
+﻿<!doctype html>
+<html class="no-js" lang="en">
+
+<!-- Mirrored from new.uouapps.com/remoticv/index-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 19 May 2019 06:20:30 GMT -->
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="M_Adnan" />
+    <!-- Document Title -->
+    <title>Resume / CV HTML5 Template</title>
+
+    <!-- StyleSheets -->
+    <link rel="stylesheet" href="~/assets/css/ionicons.min.css">
+    <link rel="stylesheet" href="~/assets/css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="~/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/assets/css/main.css">
+    <link rel="stylesheet" href="~/assets/css/style.css">
+    <link rel="stylesheet" href="~/assets/css/responsive.css">
+
+    <!-- FontsOnline -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+
+    @RenderSection("addcss", required: false)
+    <!-- JavaScripts -->
+    <script src="~/assets/js/vendors/modernizr.js"></script>
+    <script src="https://kit.fontawesome.com/cf7085364a.js" crossorigin="anonymous"></script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+</head>
+<body>
+
+    <!-- Page Wrapper -->
+    <div id="wrap">
+
+        <!-- Header -->
+        <nav id="cd-lateral-nav">
+            <h5 class="tittle">MotiCv</h5>
+            <ul class="cd-navigation">
+                <li><a asp-controller="home" asp-action="index">Index Main</a></li>
+                <li><a asp-controller="home" asp-action="index">About Me</a></li>
+                <li><a asp-controller="home" asp-action="resume">Resume</a></li>
+                <li><a asp-controller="home" asp-action="portfolio">Portfolio</a></li>
+                <li><a asp-controller="blog" asp-action="index">Blog</a></li>
+                <li><a asp-controller="home" asp-action="contact">Contact Me</a></li>
+                <li class="item-has-children">
+                    @if (@User.Identity.IsAuthenticated)
+                    {
+                        <p style="padding-left:20px; margin-top: 10px;">My Account</p>
+                        <a href="index.html" style="text-transform:unset;">@User.GetPrincipalName()</a>
+                        <ul class="sub-menu">
+                            <li><a asp-controller="account" asp-action="logout">Log out</a></li>
+                        </ul>
+                    }
+                </li>
+                @if (@User.Identity.IsAuthenticated == false)
+                {
+                    <li><a asp-controller="account" asp-action="signin">Sign in</a></li>
+                    <li><a asp-controller="account" asp-action="register">Register</a></li>
+                }
+            </ul>
+            @await Component.InvokeAsync("RecentPosts")
+        </nav>
+
+
+        <!-- End Header -->
+        <!-- Content -->
+        <main class="cd-main-content">
+            <div id="content" class="bg">
+                <div class="resume">
+                    <div class="container">
+
+                        <!-- TOP HEAD -->
+                        <div style="margin-bottom:70px" class="top-head">
+                            <div class="row">
+                                <div class="col-sm-12"> <a id="cd-menu-trigger" href="#0"><span class="cd-menu-icon"></span></a> </div>
+                            </div>
+                        </div>
+
+                        <!-- Resume -->
+                        <div class="row">
+
+                            <!-- Sidebar -->
+                            <div class="col-md-4">
+                                <div class="side-bar">
+
+                                    <!-- Professional Details -->
+                                    <h5 class="tittle">Professional Details</h5>
+                                    <img src="~/assets/images/avatar.jpg" class="img-responsive" alt="">
+                                    @await Component.InvokeAsync("About");
+
+                                    <!-- Attachments -->
+                                    <h5 class="tittle">Attachments</h5>
+                                    <div class="attach bor-btm padding-25">
+                                        <ul>
+                                            <li>
+                                                <form asp-controller="Home" asp-action="Pdf">
+                                                    <p>
+                                                        <img src="~/assets/images/pdf-icon.jpg" alt="" />
+                                                        Curriculum-Vitae.pdf
+                                                        @*<form method="post" asp-controller="Home" asp-action="Export">
+                                                            <button formmethod="post" asp-controller="Home" asp-action="Export" type="submit">
+                                                            <i class="fa fa-cloud-download"></i>
+                                                            </button>
+                                                            </form>*@
+                                                        <button asp-controller="Home" asp-action="Pdf" type="submit"><i class="fa fa-eye"></i></button>
+
+
+                                                    </p>
+                                                </form>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+
+                                    <!-- Social Profiles -->
+                                    <h5 class="tittle">Social Profiles</h5>
+                                    <div class="social-icon bor-btm padding-25">
+                                        <ul>
+                                            <li> <a href="#."> <i class="fa fa-facebook"></i></a> </li>
+                                            <li> <a href="#."> <i class="fa fa-google"></i></a> </li>
+                                            <li> <a href="#."> <i class="fa fa-twitter"></i></a> </li>
+                                            <li> <a href="#."> <i class="fa fa-linkedin"></i></a> </li>
+                                            <li> <a href="#."> <i class="fa fa-skype"></i></a> </li>
+                                        </ul>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                            <!-- MAIN CONTENT -->
+                            <div class="col-md-8">
+
+                                <!-- NAV LINKS -->
+                                <partial name="_Navbar" />
+                                <!-- NAV LINKS END -->
+
+                                <div class="tab-content">
+                                    @RenderBody()
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!-- End Content -->
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="rights">
+                <p>© Copyright 2016 MotiCV. All right reserved.</p>
+            </div>
+        </footer>
+        <!-- End Footer -->
+
+    </div>
+    <!-- End Page Wrapper -->
+    <!-- JavaScripts -->
+    <script src="~/assets/js/vendors/jquery/jquery.min.js"></script>
+    <script src="~/assets/js/vendors/bootstrap.min.js"></script>
+    <script src="~/assets/js/vendors/owl.carousel.min.js"></script>
+    <script src="~/assets/js/vendors/jquery.isotope.min.js"></script>
+    <script src="~/assets/js/main.js"></script>
+
+    <!-- Begin Map Script-->
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+    <script src="~/assets/js/vendors/map.js"></script>
+    @RenderSection("addjs", required: false)
+</body>
+
+<!-- Mirrored from new.uouapps.com/remoticv/index-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 19 May 2019 06:20:30 GMT -->
+</html>

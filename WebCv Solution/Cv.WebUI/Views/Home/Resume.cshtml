@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Resume";
+}
+
+<div class="inside-sec">
+    <!-- BIO AND SKILLS -->
+    <h5 class="tittle">Bio & Skills</h5>
+    <div class="bio-info padding-30">
+        @await Component.InvokeAsync("ResumeBio")
+        <div class="skills">
+            <!-- HARD SKILLS -->
+            <h5 class="margin-top-30">Hard Skills</h5>
+            @await Component.InvokeAsync("ResumeSkill")
+        </div>
+    </div>
+</div>
+
+<div class="inside-sec margin-top-30">
+    <!-- Professional Experience -->
+    <h5 class="tittle">Professional Experience</h5>
+    <div class="padding-30 exp-history">
+        @await Component.InvokeAsync("ResumeExperience")
+    </div>
+</div>
+
+<div class="inside-sec margin-top-30">
+    <!-- Academic Background -->
+    <h5 class="tittle">Academic Background</h5>
+    <div class="padding-30 exp-history">
+        @await Component.InvokeAsync("ResumeDiploma")
+    </div>
+</div>

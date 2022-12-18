@@ -1,0 +1,15 @@
+﻿@model BlogPostComment
+
+<li class="margin-bottom-30 @(Model.ParentId != null ? "comment-sub" : "") comment" id="c-@Model.Id" data-comment-id="@Model.Id">
+    <div class="media">
+        <div class="media-body">
+            <div class="a-com">
+                <span class="a-name text-color-primary">@($"{Model.CreatedByUser?.Name} {Model.CreatedByUser?.Surname}")</span><span class="date">@Model.CreatedDate.ToString("dd.MM.yyyy HH:mm").</span>
+                <p class="margin-top-20">
+                    @Model.Comment
+                </p>
+                <a class="text-right btn-comment-reply"> REPLAY <i class="fa fa-reply"></i></a>
+            </div>
+        </div>
+    </div>
+</li>

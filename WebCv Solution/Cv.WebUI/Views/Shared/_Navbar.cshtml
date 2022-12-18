@@ -1,0 +1,32 @@
+﻿<nav>
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-tabis" aria-expanded="false"> <span class="tittle">MENU</span> <span class="fa fa-navicon icon-nav"></span> </button>
+    <div class="collapse navbar-collapse" id="nav-tabis">
+        <ul class="isop-filter nav nav-pills">
+            <li role="presentation" >
+                <a asp-controller="home" asp-action="index" class="nav-link">
+                    <i class="icon-user"></i> ABOUT ME
+                </a>
+            </li>
+            <li role="presentation">
+                <a asp-controller="home" asp-action="resume" class="nav-link">
+                    <i class="icon-book-open"></i>RESUME
+                </a>
+            </li>
+            <li role="presentation">
+                <a asp-controller="home" asp-action="portfolio" class="nav-link">
+                    <i class="icon-rocket"></i>PORTFOLIO
+                </a>
+            </li>
+            <li role="presentation">
+                <a asp-controller="blog" asp-action="index" class="nav-link">
+                    <i class="icon-note"></i>BLOG
+                </a>
+            </li>
+            <li role="presentation">
+                <a asp-controller="home" asp-action="contact" class="nav-link">
+                    <i class="icon-pencil"></i>CONTACT ME
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>

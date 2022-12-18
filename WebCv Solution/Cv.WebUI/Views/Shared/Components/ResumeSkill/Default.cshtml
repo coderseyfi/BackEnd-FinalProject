@@ -1,0 +1,60 @@
+﻿@model IEnumerable<ResumeSkill>
+
+
+@foreach (var item in Model)
+{
+    @if(item.View == null){
+    <h6>@item.ResumeCategory.Name</h6>
+
+    <div class="panel-group accordion" id="accordion5">
+        <div class="panel panel-default">
+            <div class="row">
+                <div class="col-sm-4">
+                    <!-- PANEL HEADING -->
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse"
+                           data-parent="#accordion5"
+                           href="#collapseOne5">
+                                @item.Name
+                            </a>
+                        </h4>
+                    </div>
+                </div>
+
+                <div class="col-sm-8">
+                    <div class="progress">
+                        <div class="progress-bar"
+                         role="progressbar"
+                         aria-valuenow="80"
+                         aria-valuemin="0"
+                         aria-valuemax="100"
+                         style="width: @item.Level%">
+                            <span class="sr-only">@item.Level% Complete</span>
+                        </div>
+                    </div>
+
+                    <!-- Skillls Bars -->
+                    <!-- Skillls Text -->
+                    <div id="collapseOne5"
+                     class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <p>
+                                @item.Description.ToPlainText()
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    }
+    else if(item.View != null){
+    <div class="ethical">
+        <h6>@item.ResumeCategory.Name</h6>
+            <a href="#.">@item.Name</a>
+    </div>
+    }
+}
+

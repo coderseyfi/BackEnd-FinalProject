@@ -1,0 +1,118 @@
+﻿<nav class="pcoded-navbar">
+    <div class="pcoded-inner-navbar main-menu">
+        <div class="pcoded-navigatio-lavel">Management</div>
+        <ul class="pcoded-item pcoded-left-item">
+            <li>
+                <a asp-controller="dashboard" asp-action="index">
+                    <span class="pcoded-micon">
+                        <i class="feather icon-home"></i>
+                    </span>
+                    <span class="pcoded-mtext">Homepage</span>
+                </a>
+            </li>
+            <li>
+                <a asp-controller="Abouts" asp-action="index">
+                    <span class="pcoded-micon">
+                        <i class="fa-solid fa-address-card"></i>
+                    </span>
+                    <span class="pcoded-mtext">About Me</span>
+                </a>
+            </li>
+            <li class="pcoded-hasmenu" dropdown-icon="style1" subitem-icon="style1">
+                <a href="javascript:void(0)">
+                    <span class="pcoded-micon"><i class="fa-solid fa-signs-post"></i></span>
+                    <span class="pcoded-mtext">Blog Posts</span>
+                    <span class="pcoded-mcaret"></span>
+                </a>
+                <ul class="pcoded-submenu">
+                    <li>
+                        <a asp-controller="blogposts" asp-action="index">
+                            <span class="pcoded-mtext">Paylaşımlar</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-controller="blogposts" asp-action="deletedposts">
+                            <span class="pcoded-mtext">Silinmiş paylaşımlar</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-controller="brands" asp-action="index">
+                            <span class="pcoded-mtext">Qadağa edilmiş sözlər</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-controller="brands" asp-action="index">
+                            <span class="pcoded-mtext">Rəy funksionallıqları</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="pcoded-hasmenu" dropdown-icon="style1" subitem-icon="style1">
+                <a href="javascript:void(0)">
+                    <span class="pcoded-micon"><i class="fa-solid fa-file"></i></span>
+                    <span class="pcoded-mtext">Resume</span>
+                    <span class="pcoded-mcaret"></span>
+                </a>
+                <ul class="pcoded-submenu">
+                    <li>
+                        <a asp-controller="resumebios" asp-action="index">
+                            <span class="pcoded-mtext">Bio</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-controller="resumeskills" asp-action="index">
+                            <span class="pcoded-mtext">Skills</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-controller="resumeexperiences" asp-action="index">
+                            <span class="pcoded-mtext">Experience</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-controller="ResumeDiploms" asp-action="index">
+                            <span class="pcoded-mtext">Diploma</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a asp-controller="ContactPosts" asp-action="index">
+                    <span class="pcoded-micon">
+                        <i class="feather icon-mail"></i>
+                    </span>
+                    <span class="pcoded-mtext">Messages from users</span>
+                </a>
+            </li>
+
+            <li class="pcoded-hasmenu" dropdown-icon="style1" subitem-icon="style1">
+                <a href="javascript:void(0)">
+                    <span class="pcoded-micon"><i class="fa-solid fa-print"></i></span>
+                    <span class="pcoded-mtext">Portfoilo</span>
+                    <span class="pcoded-mcaret"></span>
+                </a>
+                <ul class="pcoded-submenu">
+                    <li>
+                        <a asp-controller="projects" asp-action="index">
+                            <span class="pcoded-mtext">Projects</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-controller="ProjectCategories" asp-action="index">
+                            <span class="pcoded-mtext">Project Category</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a asp-controller="ContactPosts" asp-action="index">
+                    <span class="pcoded-micon">
+                        <i class="fa-solid fa-phone"></i>
+                    </span>
+                    <span class="pcoded-mtext">Contact with Admin</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>

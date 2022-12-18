@@ -1,0 +1,193 @@
+﻿@model BlogPost
+
+@{
+    ViewData["Title"] = "Details";
+
+    IEnumerable<BlogPostComment> GetComments(BlogPostComment parent)
+    {
+        if (parent.ParentId != null)
+            yield return parent;
+
+        foreach (var item in parent.Children.SelectMany(c => GetComments(c)))
+        {
+            yield return item;
+        }
+
+    }
+}
+
+<div role="tabpanel" class="tab-pane fade active in" id="blog">
+
+    <div class="inside-sec blog">
+        <!-- BIO AND SKILLS -->
+        <h5 class="tittle">BLOG POST</h5>
+
+        <!-- Blog -->
+        <article class="blog-post width-100 padding-25">
+
+            <div class="post-img">
+                <img src="~/uploads/images/@Model.ImagePath" alt="blog-image">
+                <span class="date-in">@Model.PublishedDate?.ToString("dd MMM")</span>
+            </div>
+
+            <!-- BLOG DETAIL -->
+            <h4 class="font-normal">@Model.Title</h4>
+            <ul class="post-info">
+                <li> <i class="fa fa-comments-o"></i>@Model.Comments.Count</li>
+                <li> <i class="fa fa-eye"></i>565 </li>
+                <li> <i class="fa fa-bookmark-o"></i>Photography </li>
+                <li>  </li>
+            </ul>
+
+            @Html.Raw(@Model.Body)
+
+            <div class="next-prev">
+                <div class="row">
+                    <div class="col-md-6 text-left"><a href="#." class="font-16px font-crimson text-uppercase"><i class="fa fa-long-arrow-left margin-right-15"></i> PREVIOUS Article</a></div>
+                    <div class="col-md-6 text-right"><a href="#." class="font-16px font-crimson text-uppercase">Next Article<i class="fa fa-long-arrow-right margin-left-15"></i></a></div>
+                </div>
+            </div>
+
+
+            <div class="comments">
+
+                <!-- Main Heading -->
+                <div class="heading-side-bar margin-bottom-50 margin-top-100">
+                    <h4>Comment (@Model.Comments.Count)</h4>
+                </div>
+                <ul>
+                    <!-- Comments -->
+                    @foreach (var comment in Model.Comments.Where(c => c.ParentId == null))
+                    {
+                        <li class="margin-bottom-30 comment" id="c-@comment.Id" data-comment-id="@comment.Id">
+                            <div class="media">
+                                <div class="media-body">
+                                    <div class="a-com">
+                                        <span class="a-name text-color-primary">@($"{comment.CreatedByUser?.Name} {comment.CreatedByUser?.Surname}")</span><span class="date">@comment.CreatedDate.ToString("dd.MM.yyyy HH:mm").</span>
+                                        <p class="margin-top-20">
+                                            @comment.Comment
+                                        </p>
+                                        <a class="text-right btn-comment-reply"> REPLAY <i class="fa fa-reply"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <!-- Comments Replay -->
+                        @foreach (var subComment in GetComments(comment))
+                        {
+                            <li class="margin-bottom-30 comment-sub comment" id="c-@subComment.Id" data-comment-id="@subComment.Id">
+                                <div class="media">
+                                    <div class="media-body">
+                                        <div class="a-com">
+                                            <span class="a-name text-color-primary">@($"{subComment.CreatedByUser?.Name} {subComment.CreatedByUser?.Surname}")</span><span class="date">@subComment.CreatedDate.ToString("dd.MM.yyyy HH:mm").</span>
+                                            <p class="margin-top-20">
+                                                @subComment.Comment
+                                            </p>
+                                            <a class="text-right btn-comment-reply"> REPLAY <i class="fa fa-reply"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        }
+                    }
+                </ul>
+
+                <!-- Comments Form -->
+                <div class="comment-form">
+                    <!-- Main Heading -->
+                    <div class="heading-side-bar margin-bottom-50 margin-top-80">
+                        <h4>Post to Reply</h4>
+                    </div>
+                    <form method="post" id="replyForm">
+                        <div id="replyToComment"></div>
+                        <input type="hidden" name="postId" value="@Model.Id" />
+                        <ul class="row">
+                            <li class="col-sm-12">
+                                <textarea placeholder="YOUR MESSAGE"
+                                          style="resize: none"
+                                          id="comment-text"
+                                          name="comment"></textarea>
+                            </li>
+                            <li class="col-sm-12">
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <button type="submit" class="btn btn-dark">POST COMMENT </button>
+                                }
+                                else
+                                {
+                                    <a asp-action="Signin" asp-controller="account" class="btn btn-dark">Sign in to comment on post</a>
+                                }
+                            </li>
+                        </ul>
+                    </form>
+                </div>
+            </div>
+
+        </article>
+    </div>
+</div>
+
+
+@section addjs{
+    <script>
+    $(document).ready(function(){
+        $(".btn-comment-reply").click(function(e){
+            e.preventDefault();
+
+            $("#replyToComment").html("<a href='javascript:removeSelectedReply()' class='remove-selected-comment' >&times</a>").append($(e.currentTarget).closest(".comment").clone());
+        })
+
+        $("#replyForm").submit(function(e) {
+            e.preventDefault();
+
+            let formData = new FormData(e.currentTarget);
+
+            let toCommentId = $(`#replyToComment li.comment`).data("comment-id");
+
+
+            //console.log("commentId",toCommentId);
+
+            if(toCommentId != undefined){
+                formData.set("commentId", toCommentId);
+            }
+
+
+            $.ajax({
+                url: `@Url.Action("PostComment", "Blog")`,
+                type: "POST",
+                data: formData,
+                contentType: false,
+                processData: false,
+                dataType: "json",
+                success: function(res){
+                    //console.log(res);
+                },
+                error: function(response){
+
+                    if(response.statusText == "parsererror"){
+                        if(toCommentId != undefined){
+                           $(response.responseText).insertAfter($(`#c-${toCommentId}`));
+
+                           $("#replyToComment").html("")
+                           e.currentTarget.reset();
+                           $("#comment-text").val("");
+                        }
+                        else
+                        {
+                            $("div.comments ul").append($(response.responseText))
+                            $("#comment-text").val("");
+                        }
+                    }
+
+                    console.warn(response);
+                }
+            });
+        })
+    })
+
+    function removeSelectedReply(el) {
+        $("#replyToComment").html("");
+    }
+    </script>
+}
